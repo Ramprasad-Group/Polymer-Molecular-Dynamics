@@ -1,5 +1,3 @@
-import pytest
-
 from pmd.core import GAFF2, OPLS, System
 
 test_smiles = '*CC*'
