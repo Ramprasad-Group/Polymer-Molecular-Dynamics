@@ -21,7 +21,7 @@ if __name__ == '__main__':
     #       zip_safe=False)
     try:
         setup(use_scm_version={'version_scheme': 'no-guess-dev'})
-    except:
+    except Exception:
         print('\n\nAn error occurred while building the project, '
               'please ensure you have the most updated version of '
               'setuptools, setuptools_scm and wheel with:\n'
