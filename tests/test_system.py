@@ -1,6 +1,6 @@
 import pytest
 
-from pmd.core import System, GAFF2, OPLS
+from pmd.core import GAFF2, OPLS, System
 
 test_smiles = '*CC*'
 test_force_field = GAFF2()
