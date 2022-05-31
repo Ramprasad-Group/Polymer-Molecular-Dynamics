@@ -58,11 +58,6 @@ class System:
                  ru_per_chain: Optional[int] = None,
                  data_fname: str = 'data.lmps'):
 
-        # convert * to [*]
-        stars_no_bracket = re.findall(r'(?<!\[)\*(?!\])', smiles)
-        if len(stars_no_bracket) == 2:
-            smiles = smiles.replace('*', '[*]')
-
         self._smiles = smiles
         self._density = density
         self._force_field = force_field
@@ -74,6 +69,9 @@ class System:
 
         # Make sure only 1 chain length option is given
         validate_options(self, CHAIN_LENGTH_OPTIONS)
+
+        # convert * to [*]
+        self._convert_asterisk()
 
         # Calculate system specs such as chain length, # of polymers
         self._calculate_system_spec()
@@ -96,11 +94,17 @@ class System:
     @smiles.setter
     def smiles(self, smiles: str):
         self._smiles = smiles
+        self._convert_asterisk()
         self._calculate_system_spec()
 
     @force_field.setter
     def force_field(self, force_field: str):
         self._force_field = force_field
+
+    def _convert_asterisk(self):
+        stars_no_bracket = re.findall(r'(?<!\[)\*(?!\])', self._smiles)
+        if len(stars_no_bracket) == 2:
+            self._smiles = self._smiles.replace('*', '[*]')
 
     def _calculate_system_spec(self):
         mol = Chem.MolFromSmiles(self._smiles)

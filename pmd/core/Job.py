@@ -1,7 +1,7 @@
 import os
 from typing import Union
 
-from pmd.core import Lammps
+from pmd.core.Lammps import Lammps
 from pmd.util import Pmdlogging, build_dir
 
 
