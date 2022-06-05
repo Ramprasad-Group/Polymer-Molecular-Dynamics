@@ -6,7 +6,7 @@ if __name__ == '__main__':
         # graph and use_scm_version
         setup(name='pmd',
               install_requires=[
-                  'importlib-metadata'
+                  'importlib-metadata',
                   'pyyaml>=5.0',
                   'numpy>=1.0',
                   'pandas>=1.0',
