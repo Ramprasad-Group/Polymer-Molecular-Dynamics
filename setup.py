@@ -15,7 +15,7 @@ if __name__ == '__main__':
                   'rdkit-pypi>=2022.3.2',
                   'emc-pypi>=1.0.0',
               ],
-              extra_require={
+              extras_require={
                   'testing': ['setuptools', 'pytest', 'pytest-cov'],
               },
               use_scm_version={'version_scheme': 'no-guess-dev'})
