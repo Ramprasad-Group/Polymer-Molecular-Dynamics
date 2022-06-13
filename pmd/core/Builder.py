@@ -293,7 +293,7 @@ class PSP(Builder):
             'RightCap': ['[*][H]']
         }
         self._run_psp(input_data, density, data_fname, output_dir, cleanup)
-_
+
     def write_solvent_data(self, output_dir, smiles, solvent_smiles, density,
                            natoms_total, length, nsolvents, nchains,
                            data_fname, cleanup):
