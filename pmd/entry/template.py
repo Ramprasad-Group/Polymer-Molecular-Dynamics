@@ -8,12 +8,13 @@ SYSTEM_OPTIONS = ('System', 'SolventSystem', 'GasSystem')
 SYSTEM_SIZE_OPTIONS = ('natoms_total=10000', 'nchains_total=50')
 CHAIN_LENGTH_OPTIONS = ('natoms_per_chain=150', 'ru_per_chain=25',
                         'mw_per_chain=1000')
-BUILDER_OPTIONS = ('PSP(force_field=\'opls-lbcc\'',
-                   'PSP(force_field=\'opls-cm1a\'',
-                   'PSP(force_field=\'gaff2-gasteiger\'',
-                   'PSP(force_field=\'gaff2-am1bcc\'',
-                   'EMC(force_field=\'pcff\'', 'EMC(force_field=\'opls-aa\'',
-                   'EMC(force_field=\'opls-ua\'', 'EMC(force_field=\'trappe\'')
+BUILDER_OPTIONS = ('PSP(force_field=\'opls-lbcc\')',
+                   'PSP(force_field=\'opls-cm1a\')',
+                   'PSP(force_field=\'gaff2-gasteiger\')',
+                   'PSP(force_field=\'gaff2-am1bcc\')',
+                   'EMC(force_field=\'pcff\'', 'EMC(force_field=\'opls-aa\')',
+                   'EMC(force_field=\'opls-ua\'',
+                   'EMC(force_field=\'trappe\')')
 JOB_OPTIONS = ('Torque', 'Slurm', None)
 
 LAMMPS_FIELDS = {
@@ -163,7 +164,7 @@ def create_script(file_name: str, system: str, system_size: str,
         f.write(f'{system_indent}density=0.8,\n')
         f.write(f'{system_indent}{system_size},\n')
         f.write(f'{system_indent}{chain_length},\n')
-        f.write(f'{system_indent}builder=pmd.{builder}))\n')
+        f.write(f'{system_indent}builder=pmd.{builder})\n')
         f.write('\n')
 
         # write the Lammps section
