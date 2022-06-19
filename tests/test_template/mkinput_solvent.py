@@ -2,18 +2,19 @@ import pmd
 
 if __name__ == '__main__':
     # Define the system
-    system = pmd.SolventSystem(smiles='*CC*', # your polymer SMILES
-                               solvent_smiles='CCO', # your solvent SMILES
-                               ru_nsolvent_ratio='0.1',
-                               density=0.8,
-                               nchains_total=50,
-                               ru_per_chain=25,
-                               builder=pmd.PSP(force_field='gaff2-am1bcc'))
+    system = pmd.SolventSystem(
+        smiles='*CC*',  # your polymer SMILES
+        solvent_smiles='CCO',  # your solvent SMILES
+        ru_nsolvent_ratio='0.1',
+        density=0.8,
+        nchains_total=50,
+        ru_per_chain=25,
+        builder=pmd.PSP(force_field='gaff2-am1bcc'))
 
     # Define LAMMPS simulation procedures
     lmp = pmd.Lammps(read_data_from=system)
-    lmp.add_procedure(pmd.Minimization()) # avoid atom overlap
-    lmp.add_procedure(pmd.Equilibration(Teq=300, Tmax=600)) # 21-step equil.
+    lmp.add_procedure(pmd.Minimization())  # avoid atom overlap
+    lmp.add_procedure(pmd.Equilibration(Teq=300, Tmax=600))  # 21-step equil.
     lmp.add_procedure(
         pmd.MSDMeasurement(T=300,
                            group=system.solvent_group,

@@ -2,16 +2,17 @@ import pmd
 
 if __name__ == '__main__':
     # Define the system
-    system = pmd.System(smiles='*CC*', # change to your SMILES of interest
-                        density=0.8,
-                        natoms_total=10000,
-                        natoms_per_chain=150,
-                        builder=pmd.PSP(force_field='opls-lbcc'))
+    system = pmd.System(
+        smiles='*CC*',  # change to your SMILES of interest
+        density=0.8,
+        natoms_total=10000,
+        natoms_per_chain=150,
+        builder=pmd.PSP(force_field='opls-lbcc'))
 
     # Define LAMMPS simulation procedures
     lmp = pmd.Lammps(read_data_from=system)
-    lmp.add_procedure(pmd.Minimization()) # avoid atom overlap
-    lmp.add_procedure(pmd.Equilibration(Teq=600, Tmax=1000)) # 21-step equil.
+    lmp.add_procedure(pmd.Minimization())  # avoid atom overlap
+    lmp.add_procedure(pmd.Equilibration(Teq=600, Tmax=1000))  # 21-step equil.
     lmp.add_procedure(
         pmd.TgMeasurement(Tinit=600,
                           Tfinal=100,
