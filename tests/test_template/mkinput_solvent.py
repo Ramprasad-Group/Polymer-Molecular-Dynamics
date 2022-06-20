@@ -3,8 +3,8 @@ import pmd
 if __name__ == '__main__':
     # Define the system
     system = pmd.SolventSystem(
-        smiles='*CC*',  # your polymer SMILES
-        solvent_smiles='CCO',  # your solvent SMILES
+        smiles='*CC*',  # change to polymer SMILES of your interest
+        solvent_smiles='CCO',  # change to your solvent SMILES
         ru_nsolvent_ratio='0.1',
         density=0.8,
         nchains_total=50,

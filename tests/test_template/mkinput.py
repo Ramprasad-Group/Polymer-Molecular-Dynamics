@@ -3,7 +3,7 @@ import pmd
 if __name__ == '__main__':
     # Define the system
     system = pmd.System(
-        smiles='*CC*',  # change to your SMILES of interest
+        smiles='*CC*',  # change to polymer SMILES of your interest
         density=0.8,
         natoms_total=10000,
         natoms_per_chain=150,
